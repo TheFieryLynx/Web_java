@@ -30,10 +30,5 @@ INSERT INTO Orders(Customer_Login, Address, Delivery_time, Status, Order_time, O
 		('gbluett4', '265198, Тульская область, город Балашиха, наб. Гагарина, 27', TO_DATE('10/01/2020', 'DD/MM/YYYY'), 'delivered', TO_DATE('09/02/2020', 'DD/MM/YYYY'), 467 , 'Зов предков. Белый клык, Лондон Джек, 467'),
 		('hellam9', '266168, Ленинградская область, город Наро-Фоминск, проезд Домодедовская, 31', TO_DATE('30/03/2020', 'DD/MM/YYYY'), 'processed', TO_DATE('28/03/2020', 'DD/MM/YYYY'), 869, 'Воин Доброй Удачи, Бэккер Р. Скотт');
 
-INSERT INTO Busket(Customer_Login, Book_id, Amount) Values
-		('ctroni1', 4, 1),
-		('ctroni1', 2, 2),
-		('ctroni1', 3, 1),
-		('ctroni1', 1, 1);
 	
 

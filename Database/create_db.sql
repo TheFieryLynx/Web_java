@@ -35,12 +35,6 @@ CREATE TABLE IF NOT EXISTS Books (
 	Num_pages integer NOT NULL,
 	Cover_type varchar(100) NOT NULL
 );
-	
-CREATE TABLE IF NOT EXISTS Busket (
-	Customer_Login varchar(100) REFERENCES Customers (Customer_Login),
-	Book_id integer REFERENCES Books (Book_id),
-	Amount integer NOT NULL
-);
 
 CREATE TABLE IF NOT EXISTS Admin (
 	Admin_login varchar(100) PRIMARY KEY,
