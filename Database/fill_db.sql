@@ -1,4 +1,4 @@
-INSERT INTO Admin Values ('admin', 'qwertyuiop');
+INSERT INTO Admin(Admin_login, Admin_Password) Values ('admin', 'qwertyuiop');
 
 INSERT INTO Books(Price, Amount, Title, Author, Genre, Pub_house, Pub_Year, Num_pages, Cover_type) Values
 		(619, 100, 'Вышивка по ворованной ткани', 'Арбатова Мария Ивановна', 'Современная отечественная проза' , 'Эксмо', 2021, 312, 'Твердая бумажная'),
@@ -24,11 +24,11 @@ INSERT INTO Customers(Customer_Login, Customer_Password, LastName, FirstName, Ad
 		('jvatini8', 'tWzHhy5', 'Vatini', 'Joella', '371980, Смоленская область, город Раменское, пр. Сталина, 53', '33(415)530-4849', 'jvatini8@google.nl'),
 		('hellam9', 'nNa0NGjP0FIt', 'Ellam', 'Hi', '266168, Ленинградская область, город Наро-Фоминск, проезд Домодедовская, 31', '359(616)777-6699', 'hellam9@deliciousdays.com');
 
-INSERT INTO Orders(Customer_Login, Address, Delivery_time, Status, Order_time, Order_price, Order_list) Values
-		('ecronkshaw2', '193857, Воронежская область, город Москва, спуск Чехова, 62', TO_DATE('17/02/2020', 'DD/MM/YYYY'), 'delivered', TO_DATE('16/02/2020', 'DD/MM/YYYY'), 744, 'Не смыкая глаз, Доусон Эйприл, 598,
+INSERT INTO Orders(Customer_ID, Address, Delivery_time, Status, Order_time, Order_price, Order_list) Values
+		(3, '193857, Воронежская область, город Москва, спуск Чехова, 62', TO_DATE('17/02/2020', 'DD/MM/YYYY'), 'delivered', TO_DATE('16/02/2020', 'DD/MM/YYYY'), 744, 'Не смыкая глаз, Доусон Эйприл, 598,
 																																   Проклятие Немезиды, Захаров Дмитрий Аркадьевич, 146'),
-		('gbluett4', '265198, Тульская область, город Балашиха, наб. Гагарина, 27', TO_DATE('10/01/2020', 'DD/MM/YYYY'), 'delivered', TO_DATE('09/02/2020', 'DD/MM/YYYY'), 467 , 'Зов предков. Белый клык, Лондон Джек, 467'),
-		('hellam9', '266168, Ленинградская область, город Наро-Фоминск, проезд Домодедовская, 31', TO_DATE('30/03/2020', 'DD/MM/YYYY'), 'processed', TO_DATE('28/03/2020', 'DD/MM/YYYY'), 869, 'Воин Доброй Удачи, Бэккер Р. Скотт');
+		(5, '265198, Тульская область, город Балашиха, наб. Гагарина, 27', TO_DATE('10/01/2020', 'DD/MM/YYYY'), 'delivered', TO_DATE('09/02/2020', 'DD/MM/YYYY'), 467 , 'Зов предков. Белый клык, Лондон Джек, 467'),
+		(10, '266168, Ленинградская область, город Наро-Фоминск, проезд Домодедовская, 31', TO_DATE('30/03/2020', 'DD/MM/YYYY'), 'processed', TO_DATE('28/03/2020', 'DD/MM/YYYY'), 869, 'Воин Доброй Удачи, Бэккер Р. Скотт');
 
 	
 

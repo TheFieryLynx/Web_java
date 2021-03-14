@@ -1,9 +1,8 @@
--- CREATE DATABASE Bookstore;
-
-DROP TABLE Admin, Busket, Orders, Customers, Books;
+DROP TABLE Admin, Orders, Customers, Books;
 
 CREATE TABLE IF NOT EXISTS Customers (
-	Customer_Login varchar(100) PRIMARY KEY,
+	Customer_ID Serial PRIMARY KEY,
+	Customer_Login varchar(100) NOT NULL,
 	Customer_Password text NOT NULL CHECK (char_length(Customer_Password) >= 4),
 	LastName varchar(100) NOT NULL,
 	FirstName varchar(100) NOT NULL,
@@ -14,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Customers (
 
 CREATE TABLE IF NOT EXISTS Orders (
 	Order_id Serial PRIMARY KEY,
-	Customer_Login varchar REFERENCES Customers (Customer_Login),
+	Customer_ID integer REFERENCES Customers (Customer_ID),
 	Address varchar(200) NOT NULL,
 	Delivery_time timestamptz NOT NULL,
 	Status varchar(100) NOT NULL,
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Books (
 );
 
 CREATE TABLE IF NOT EXISTS Admin (
-	Admin_login varchar(100) PRIMARY KEY,
+	Admin_id Serial PRIMARY KEY,
+	Admin_login varchar(100) NOT NULL,
 	Admin_Password text NOT NULL CHECK (char_length(Admin_Password) >= 4)
 );
-
