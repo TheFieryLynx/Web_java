@@ -37,6 +37,6 @@ CREATE TABLE IF NOT EXISTS Books (
 
 CREATE TABLE IF NOT EXISTS Admin (
 	Admin_id Serial PRIMARY KEY,
-	Admin_login varchar(100) NOT NULL,
+	Admin_login varchar(100) NOT NULL UNIQUE,
 	Admin_Password text NOT NULL CHECK (char_length(Admin_Password) >= 4)
 );
