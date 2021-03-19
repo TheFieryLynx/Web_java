@@ -40,6 +40,16 @@ public class Admin
         this.admin_login = admin_login;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final Admin other = (Admin) obj;
+        return (this.admin_id == other.admin_id) &&
+                (this.admin_login.equals(other.admin_login)) &&
+                (this.admin_password.equals(other.admin_password));
+    }
+
     private int admin_id;
     private String admin_login;
     private String admin_password;
