@@ -4,8 +4,6 @@ import Models.Admin;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 public class AdminServiceTest {
 
     @Test
@@ -33,7 +31,7 @@ public class AdminServiceTest {
 
         adminService.deleteAdmin(new_admin);
         check_admin = adminService.readAdminByID(new_admin.getAdmin_id());
-        Assert.assertEquals(check_admin, null);
+        Assert.assertNull(check_admin);
     }
 
     @Test

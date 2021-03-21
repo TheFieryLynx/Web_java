@@ -1,8 +1,12 @@
 package Dao;
+
 import Models.Customers;
 
 public interface CustomersDao {
-    public void create(Customers customer);
-    public void update(Customers customer);
-    public void delete(Customers customer);
+    void create(Customers customer);
+    void update(Customers customer);
+    void delete(Customers customer);
+    Customers readByID(int id);
+    Customers readByLogin(String login);
+    void deleteAccount(Customers customer);
 }

@@ -6,11 +6,10 @@ import javax.persistence.*;
 @Table(name = "customers")
 public class Customers
 {
-    public Customers(int customer_id, String customer_login,
+    public Customers(String customer_login,
                         String customer_password, String lastname,
                             String firstname, String address, String phone_number,
                                 String mail) {
-        this.customer_id = customer_id;
         this.customer_login = customer_login;
         this.customer_password = customer_password;
         this.lastname = lastname;
@@ -18,7 +17,18 @@ public class Customers
         this.address = address;
         this.phone_number = phone_number;
         this.mail = mail;
+        this.isDeleted = false;
     }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    private boolean isDeleted;
 
     public Customers() {    }
 
@@ -87,6 +97,21 @@ public class Customers
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (obj.getClass() != this.getClass()) { return false; }
+        final Customers other = (Customers) obj;
+        return (this.customer_id == other.customer_id) &&
+                (this.customer_login.equals(other.customer_login)) &&
+                (this.customer_password.equals(other.customer_password)) &&
+                (this.lastname.equals(other.lastname)) &&
+                (this.firstname.equals(other.firstname)) &&
+                (this.address.equals(other.address)) &&
+                (this.phone_number.equals(other.phone_number)) &&
+                (this.mail.equals(other.mail));
     }
 
     private int customer_id;
