@@ -11,7 +11,10 @@
         <property name="connection.password">qwerty</property>
         <property name="show_sql">true</property>
 
-        <mapping class="Admin" />
+        <mapping class="Models.Admin" />
+        <mapping class="Models.Customers" />
+        <mapping class="Models.Orders" />
+        <mapping class="Models.Books" />
 
     </session-factory>
 </hibernate-configuration>

@@ -9,7 +9,7 @@ public class AdminServiceTest {
     @Test
     public void testCreateAdmin() {
         AdminService adminService = new AdminService();
-        Admin new_admin = new Admin("AdminForTestСreate", "akula");
+        Admin new_admin = new Admin("AdminForTestCreate", "akula");
         adminService.createAdmin(new_admin);
 
         Admin check_admin = adminService.readAdminByID(new_admin.getAdmin_id());
@@ -23,7 +23,7 @@ public class AdminServiceTest {
     @Test
     public void testDeleteAdmin() {
         AdminService adminService = new AdminService();
-        Admin new_admin = new Admin("AdminForTestDelete1", "akula");
+        Admin new_admin = new Admin("AdminForTestDelete", "akula");
         adminService.createAdmin(new_admin);
         Admin check_admin = adminService.readAdminByID(new_admin.getAdmin_id());
         Assert.assertEquals(new_admin.getAdmin_login(), check_admin.getAdmin_login());
@@ -47,7 +47,6 @@ public class AdminServiceTest {
         adminService.updateAdmin(new_admin);
         check_admin = adminService.readAdminByID(new_admin.getAdmin_id());
         Assert.assertEquals(new_admin, check_admin);
-        //Assert.assertEquals(new_admin.getAdmin_password(), check_admin.getAdmin_password());
 
         adminService.deleteAdmin(new_admin);
     }
@@ -66,21 +65,19 @@ public class AdminServiceTest {
     public void testUpdateAdminPassword() {
         String newPassword = "ikea";
         AdminService adminService = new AdminService();
-        Admin new_admin = new Admin("AdminForTestReadAdminByID1", "akula");
+        Admin new_admin = new Admin("AdminForTestReadAdminByID", "akula");
         adminService.createAdmin(new_admin);
         adminService.updateAdminPassword(new_admin, newPassword);
 
         Admin check_admin = adminService.readAdminByID(new_admin.getAdmin_id());
         Assert.assertEquals(new_admin, check_admin);
-        //Assert.assertEquals(new_admin.getAdmin_login(), check_admin.getAdmin_login());
-        //Assert.assertEquals(newPassword, check_admin.getAdmin_password());
         adminService.deleteAdmin(new_admin);
     }
 
     @Test
     public void testReadAdminByLogin() {
         AdminService adminService = new AdminService();
-        Admin new_admin = new Admin("AdminForTestReadAdminByLogin2", "akula");
+        Admin new_admin = new Admin("AdminForTestReadAdminByLogin", "akula");
         adminService.createAdmin(new_admin);
         Admin check_admin = adminService.readAdminByLogin("AdminForTestReadAdminByLogin");
 

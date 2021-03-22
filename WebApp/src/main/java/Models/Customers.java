@@ -9,7 +9,7 @@ public class Customers
     public Customers(String customer_login,
                         String customer_password, String lastname,
                             String firstname, String address, String phone_number,
-                                String mail) {
+                                String mail, boolean deleted_account) {
         this.customer_login = customer_login;
         this.customer_password = customer_password;
         this.lastname = lastname;
@@ -17,18 +17,8 @@ public class Customers
         this.address = address;
         this.phone_number = phone_number;
         this.mail = mail;
-        this.isDeleted = false;
+        this.deleted_account = deleted_account;
     }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
-    private boolean isDeleted;
 
     public Customers() {    }
 
@@ -99,6 +89,14 @@ public class Customers
         this.mail = mail;
     }
 
+    public boolean getDeleted_account() {
+        return deleted_account;
+    }
+
+    public void setDeleted_account(boolean deleted_account) {
+        this.deleted_account = deleted_account;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) { return false; }
@@ -122,5 +120,6 @@ public class Customers
     private String address;
     private String phone_number;
     private String mail;
+    private boolean deleted_account;
 
 }

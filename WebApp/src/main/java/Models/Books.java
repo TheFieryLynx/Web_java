@@ -118,7 +118,7 @@ public class Books
         if (obj == null) { return false; }
         if (obj.getClass() != this.getClass()) { return false; }
         final Books other = (Books) obj;
-        return  (this.price - other.price < 0.000000001) &&
+        return  (Double.compare(this.price, other.price) == 0) &&
                 (this.amount == other.amount) &&
                 (this.title.equals(other.title)) &&
                 (this.author.equals(other.author)) &&

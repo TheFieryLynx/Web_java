@@ -12,7 +12,7 @@ public class CustomersServiceTest {
     public void testCreateCustomer() {
         CustomersService customersService = new CustomersService();
         Customers new_customer = new Customers("cwarton1", "qwertyuiop",
-                            "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org");
+                            "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         customersService.createCustomer(new_customer);
 
         Customers check_customer = customersService.readCustomerByID(new_customer.getCustomer_id());
@@ -25,7 +25,7 @@ public class CustomersServiceTest {
     public void testDeleteCustomerForever() {
         CustomersService customersService = new CustomersService();
         Customers new_customer = new Customers("cwarton1", "qwertyuiop",
-                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org");
+                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         customersService.createCustomer(new_customer);
 
         Customers check_customer = customersService.readCustomerByID(new_customer.getCustomer_id());
@@ -40,7 +40,7 @@ public class CustomersServiceTest {
     public void testUpdateCustomer() {
         CustomersService customersService = new CustomersService();
         Customers new_customer = new Customers("cwarton1", "qwertyuiop",
-                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org");
+                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         customersService.createCustomer(new_customer);
 
         Customers check_customer = customersService.readCustomerByID(new_customer.getCustomer_id());
@@ -57,7 +57,7 @@ public class CustomersServiceTest {
     public void testReadCustomerByID() {
         CustomersService customersService = new CustomersService();
         Customers new_customer = new Customers("cwarton1", "qwertyuiop",
-                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org");
+                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         customersService.createCustomer(new_customer);
 
         Customers check_customer = customersService.readCustomerByID(new_customer.getCustomer_id());
@@ -69,7 +69,7 @@ public class CustomersServiceTest {
     public void testReadCustomerByLogin() {
         CustomersService customersService = new CustomersService();
         Customers new_customer = new Customers("cwarton1", "qwertyuiop",
-                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org");
+                "Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         customersService.createCustomer(new_customer);
 
         Customers check_customer = customersService.readCustomerByLogin("cwarton1");

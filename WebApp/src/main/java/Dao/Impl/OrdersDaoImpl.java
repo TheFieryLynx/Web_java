@@ -42,4 +42,13 @@ public class OrdersDaoImpl implements OrdersDao {
             System.out.println("OrdersDelete Exception thrown: " + e.getMessage());
         }
     }
+
+    @Override
+    public Orders readByID(int id) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Orders order = session.get(Orders.class, id);
+        session.close();
+        return order;
+    }
+
 }

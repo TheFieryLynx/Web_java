@@ -2,7 +2,8 @@ package Dao;
 import Models.Orders;
 
 public interface OrdersDao {
-    public void create(Orders order);
-    public void update(Orders order);
-    public void delete(Orders order);
+    void create(Orders order);
+    void update(Orders order);
+    void delete(Orders order);
+    Orders readByID(int id);
 }

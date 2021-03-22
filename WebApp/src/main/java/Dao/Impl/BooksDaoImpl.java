@@ -1,7 +1,6 @@
 package Dao.Impl;
 
 import Dao.BooksDao;
-import Models.Admin;
 import Models.Books;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;

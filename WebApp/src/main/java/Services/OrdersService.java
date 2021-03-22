@@ -17,4 +17,8 @@ public class OrdersService {
     public void updateOrder(Orders order) {
         ordersDao.update(order);
     }
+
+    public Orders readOrderByID(int id) {
+        return ordersDao.readByID(id);
+    }
 }

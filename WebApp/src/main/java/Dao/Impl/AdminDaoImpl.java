@@ -7,10 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.List;
-
-//import javax.persistence.TypedQuery;
-
 public class AdminDaoImpl implements AdminDao {
     @Override
     public void create(Admin admin) {

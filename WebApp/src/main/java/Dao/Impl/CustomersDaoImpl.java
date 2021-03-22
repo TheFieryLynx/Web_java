@@ -1,7 +1,6 @@
 package Dao.Impl;
 
 import Dao.CustomersDao;
-import Models.Admin;
 import Models.Customers;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -62,7 +61,7 @@ public class CustomersDaoImpl implements CustomersDao {
     }
 
     public void deleteAccount(Customers customer) {
-        customer.setDeleted(true);
+        customer.setDeleted_account(true);
     }
 
 

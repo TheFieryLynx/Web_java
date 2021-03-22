@@ -2,9 +2,9 @@ package Dao;
 import Models.Admin;
 
 public interface AdminDao {
-    public void create(Admin admin);
-    public void update(Admin admin);
-    public void delete(Admin admin);
-    public Admin readByID(int id);
-    public Admin readByLogin(String login);
+    void create(Admin admin);
+    void update(Admin admin);
+    void delete(Admin admin);
+    Admin readByID(int id);
+    Admin readByLogin(String login);
 }
