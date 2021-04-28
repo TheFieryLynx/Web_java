@@ -57,6 +57,9 @@ public class CustomersDaoImpl implements CustomersDao {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Customers> query = session.createQuery("FROM Customers WHERE customer_login = :param", Customers.class)
                 .setParameter("param", login);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
         return query.getResultList().get(0);
     }
 
