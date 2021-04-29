@@ -15,6 +15,8 @@
         <mapping class="Models.Customers" />
         <mapping class="Models.Orders" />
         <mapping class="Models.Books" />
+        <mapping class="Models.Tokens" />
+
 
     </session-factory>
 </hibernate-configuration>
