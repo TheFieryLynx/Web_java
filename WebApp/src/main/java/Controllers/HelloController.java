@@ -6,27 +6,28 @@ import Services.BooksService;
 import Services.CustomersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.UUID;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class HelloController {
     CustomersService customersService = new CustomersService();
     BooksService bookService = new BooksService();
-    @GetMapping("/hello")
-    public String hello(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello";
-    }
 
     @PostMapping("/superSecureLogin")
-    public String superSecureLoginPage(@RequestParam(name="login", required=true) String login,
-                                       @RequestParam(name="password", required=true) String password, Model model) {
+    public String superSecureLoginPage(HttpServletResponse response,
+                                        @RequestParam(name="login", required=true) String login,
+                                        @RequestParam(name="password", required=true) String password, Model model) {
         Customers customer = customersService.readCustomerByLogin(login);
+
         if ((customer != null) && (password.equals(customer.getCustomer_password()))) {
+            Cookie cookie = new Cookie("login", customer.getCustomer_login());
+            response.addCookie(cookie);
             return "redirect:/AuthorizedCustomer";
         }
 
@@ -39,11 +40,11 @@ public class HelloController {
     }
 
     @GetMapping("/AuthorizedCustomer")
-    public String superSecureAuthorizedCustomer(
+    public String superSecureAuthorizedCustomer( @CookieValue(value = "login", defaultValue = "nfksnlfdkf") String username,
                                                  @RequestParam(name="login", required=false) String login,
                                                  @RequestParam(name="password", required=false) String password, Model model) {
         Books book = bookService.readBookByID(1);
-
+        System.out.println(username);
         model.addAttribute("login", login);
         model.addAttribute("password", password);
 

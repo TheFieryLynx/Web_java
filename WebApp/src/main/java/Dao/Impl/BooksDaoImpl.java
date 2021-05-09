@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class BooksDaoImpl implements BooksDao {
@@ -91,6 +92,15 @@ public class BooksDaoImpl implements BooksDao {
         return book.getPrice();
     }
 
+    @Override
+    public List<Books> AllBooks() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Books> criteria = session.getCriteriaBuilder().createQuery(Books.class);
+        criteria.from(Books.class);
+        List<Books> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
+    }
 
 
 

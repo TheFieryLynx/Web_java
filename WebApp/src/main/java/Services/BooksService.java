@@ -32,6 +32,10 @@ public class BooksService {
         return booksDao.readListByAuthor(author);
     }
 
+    public List<Books> readAllBooks() {
+        return booksDao.AllBooks();
+    }
+
     public List<Books> readBooksListByPubHouse(String pub_house) {
         return booksDao.readListByPubHouse(pub_house);
     }

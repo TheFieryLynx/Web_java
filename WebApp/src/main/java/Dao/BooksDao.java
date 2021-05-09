@@ -13,4 +13,5 @@ public interface BooksDao {
     List<Books> readListByPubHouse(String pub_house);
     int bookAmount(Books book);
     double bookPrice(Books book);
+    List<Books> AllBooks();
 }
