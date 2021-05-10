@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Customer info</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+<a href="/logged" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+
+<table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <tbody>
+    <tr>
+        <td>Login</td>
+        <td><span th:text="${customer.getCustomer_login()}"> </span></td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><span th:text="${customer.getCustomer_password()}"> </span></td>
+    </tr>
+    <tr>
+        <td>First Name</td>
+        <td><span th:text="${customer.getFirstname()}"> </span></td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td><span th:text="${customer.getLastname()}"> </span></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><span th:text="${customer.getAddress()}"> </span></td>
+    </tr>
+    <tr>
+        <td>Phone number</td>
+        <td><span th:text="${customer.getPhone_number()}"> </span></td>
+    </tr>
+    <tr>
+        <td>Mail</td>
+        <td><span th:text="${customer.getMail()}"> </span></td>
+    </tr>
+
+    </tbody>
+</table>
+<a th:href="'/customerEdit?customer_id=' + ${customer.getCustomer_id()}" class="btn btn-primary" role="button">Edit</a>
+
+</body>
+</html>

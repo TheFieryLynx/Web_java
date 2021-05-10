@@ -60,6 +60,9 @@ public class AdminDaoImpl implements AdminDao {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Admin> query = session.createQuery("FROM Admin WHERE admin_login = :param", Admin.class)
                 .setParameter("param", login);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
         return query.getResultList().get(0);
     }
 }

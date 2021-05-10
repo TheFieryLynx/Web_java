@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Log in</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+<a href="/" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+
+<form action="/identification" method="post">
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" id="validationDefaultUsername" required placeholder="Username">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword" name="password" required placeholder="Password">
+  </div>
+  <br>
+  <div class="col-md-4 mx-auto">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+
+</form>
+</body>
+</html>

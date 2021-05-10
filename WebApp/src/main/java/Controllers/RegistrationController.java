@@ -5,6 +5,7 @@ import Models.Customers;
 import Services.CustomersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,10 @@ public class RegistrationController {
     CustomersService customersService = new CustomersService();
 
     @GetMapping("/registration")
-    public String registrationPage() {
+    public String registrationPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username) {
+        if (!username.equals("DefaultValueForCookieUsername")) {
+            return "redirect:/logged";
+        }
         return "registration";
     }
 
