@@ -26,7 +26,11 @@ public class BookController {
             return "bookAdmin";
         }
 
-        return "book";
+        if(username.equals("DefaultValueForCookieUsername")) {
+            return "book";
+        }
+
+        return "LUbook";
     }
 
     @GetMapping("/bookEdit")

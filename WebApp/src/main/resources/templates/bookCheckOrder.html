@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Book info</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+<div class="btn-group" role="group" aria-label="top buttons">
+  <a th:href="'/book?book_id=' + ${book.getBook_id()}" class="btn btn-outline-primary" role="button">Back</a><br><br>
+  <a href="/" class="btn btn-outline-primary" role="button">Root page</a>
+</div>
+
+<br><br>
+<h1>Check your order</h1>
+<br>
+<div class="row" >
+<div class="table-responsive col-md-6">
+  <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <tbody>
+    <tr>
+      <td>Title</td>
+      <td><span th:text="${book.getTitle()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Author</td>
+      <td><span th:text="${book.getAuthor()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Genre</td>
+      <td><span th:text="${book.getGenre()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Publication House</td>
+      <td><span th:text="${book.getPub_house()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Year</td>
+      <td><span th:text="${book.getPub_year()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Number of pages</td>
+      <td><span th:text="${book.getNum_pages()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Cover type</td>
+      <td><span th:text="${book.getCover_type()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Book price</td>
+      <td><span th:text="${book.getPrice()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td><span th:text="${book.getAmount()}"> </span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-responsive col-md-6">
+  <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <tbody>
+    <tr>
+      <td>First Name</td>
+      <td><span th:text="${customer.getFirstname()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td><span th:text="${customer.getLastname()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><span th:text="${customer.getAddress()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td><span th:text="${customer.getPhone_number()}"> </span></td>
+    </tr>
+    <tr>
+      <td>Mail</td>
+      <td><span th:text="${customer.getMail()}"> </span></td>
+    </tr>
+
+    </tbody>
+  </table>
+  <a th:href="'/bookBuyEdit?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Edit</a>
+
+  <br><br>
+  <form th:action="'/bookMakingOrder?book_id=' + ${book.getBook_id()}" method="post" id="order">
+
+  <input type="hidden" name="customer_changed_lastName" th:value="${customer.getLastname()}" form="order" />
+
+    <button type="submit" class="btn btn-primary" form="order">Buy</button>
+
+
+</div>
+</div>
+</body>
+</html>
