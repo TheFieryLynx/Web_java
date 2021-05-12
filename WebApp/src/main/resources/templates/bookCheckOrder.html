@@ -87,11 +87,16 @@
   <a th:href="'/bookBuyEdit?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Edit</a>
 
   <br><br>
-  <form th:action="'/bookMakingOrder?book_id=' + ${book.getBook_id()}" method="post" id="order">
+  <form th:action="'/bookMakingOrder?book_id=' + ${book.getBook_id()}" method="post" id="order"></form>
 
+  <input type="hidden" name="customer_changed_firstName" th:value="${customer.getFirstname()}" form="order" />
   <input type="hidden" name="customer_changed_lastName" th:value="${customer.getLastname()}" form="order" />
+  <input type="hidden" name="customer_changed_address" th:value="${customer.getAddress()}" form="order" />
+  <input type="hidden" name="customer_changed_phoneNumber" th:value="${customer.getPhone_number()}" form="order" />
+  <input type="hidden" name="customer_changed_mail" th:value="${customer.getMail()}" form="order" />
 
-    <button type="submit" class="btn btn-primary" form="order">Buy</button>
+  <button type="submit" class="btn btn-primary" form="order">Buy</button>
+
 
 
 </div>

@@ -2,10 +2,14 @@ package Dao.Impl;
 
 import Dao.CustomersDao;
 import Models.Customers;
+import Models.Orders;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.List;
 
 public class CustomersDaoImpl implements CustomersDao {
     public void create(Customers customer) {
@@ -65,6 +69,16 @@ public class CustomersDaoImpl implements CustomersDao {
 
     public void deleteAccount(Customers customer) {
         customer.setDeleted_account(true);
+    }
+
+    @Override
+    public List<Customers> readCustomers() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        CriteriaQuery<Customers> criteria = session.getCriteriaBuilder().createQuery(Customers.class);
+        criteria.from(Customers.class);
+        List<Customers> data = session.createQuery(criteria).getResultList();
+        session.close();
+        return data;
     }
 
 

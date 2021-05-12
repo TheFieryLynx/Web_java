@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Book info</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+<a href="/" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+
+
+<form th:action="'/saveEditOrder?order_id=' + ${order.getOrder_id()}" method="post" id="orderform"></form>
+<table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <tr>
+        <td>Order ID</td>
+        <td><span th:text="${order.getOrder_id()}"> </span></td>
+    </tr>
+
+    <tr>
+        <td>Address</td>
+        <td><input class="form-control" type="text" name="address" th:value="${order.getAddress()}" form="orderform"></td>
+    </tr>
+
+    <tr>
+        <td>Delivery Time</td>
+        <td><input class="form-control" type="text" name="delivery_time" th:value="${order.getDelivery_time()}" form="orderform"></td>
+    </tr>
+
+    <tr>
+        <td>Status</td>
+<!--        <td><input class="form-control" type="text" name="status" th:value="${order.getStatus()}" form="orderform"></td>-->
+        <td>
+            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-2 pt-0" th:text="'Current_state: ' + ${order.getStatus()}"/>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Formed" form="orderform" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                            Formed
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Sent" form="orderform">
+                        <label class="form-check-label" for="gridRadios2">
+                            Sent
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="status" id="gridRadios3" value="Delivered" form="orderform">
+                        <label class="form-check-label" for="gridRadios3">
+                            Delivered
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Order Time</td>
+        <td><input class="form-control" type="text" name="order_time" th:value="${order.getOrder_time()}" form="orderform"></td>
+    </tr>
+
+    <tr>
+        <td>Order Price</td>
+        <td><input class="form-control" type="text" name="order_price" th:value="${order.getOrder_price()}" form="orderform"></td>
+    </tr>
+
+    <tr>
+        <td>Book_id</td>
+        <td><span th:text="${order.getBook_id().getBook_id()}"> </span></td>
+    </tr>
+
+</table>
+<div class="col-md-4">
+    <button type="submit" class="btn btn-primary" form="orderform">Save</button>
+</div>
+
+</body>
+</html>

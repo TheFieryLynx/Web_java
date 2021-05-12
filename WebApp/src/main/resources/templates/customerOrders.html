@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Index</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+
+<a href="/logged" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+
+<br><br>
+
+<table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col"> Order ID </th>
+    <th scope="col"> Address </th>
+    <th scope="col"> Delivery Time </th>
+    <th scope="col"> Status </th>
+    <th scope="col"> Order Time </th>
+    <th scope="col"> Order Price </th>
+    <th scope="col"> Book </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${#lists.isEmpty(orders)}">
+    <td colspan="8"> No orders :( </td>
+  </tr>
+  <tr th:each="order : ${orders}">
+    <td  scope="row"><span th:text="${order.getOrder_id()}"> </span></td>
+    <td><span th:text="${order.getAddress()}"> </span></td>
+    <td><span th:text="${order.getDelivery_time()}"> </span></td>
+    <td><span th:text="${order.getStatus()}"> </span></td>
+    <td><span th:text="${order.getOrder_time()}"> </span></td>
+    <td><span th:text="${order.getOrder_price()}"> </span></td>
+    <td><a th:href="'/book?book_id=' + ${order.getBook_id().getBook_id()}"> <span th:text="${order.getBook_id().getTitle()}"> </span> </a></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

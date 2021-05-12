@@ -25,7 +25,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:if="${books.empty}">
+      <tr th:if="${#lists.isEmpty(books)}">
         <td colspan="8"> No books :( </td>
       </tr>
       <tr th:each="book : ${books}">

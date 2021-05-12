@@ -9,14 +9,14 @@ public class Orders {
 
     public Orders() {}
 
-    public Orders(Customers customer_id, String address, java.sql.Date delivery_time, String status, java.sql.Date order_time, double order_price,  String order_list) {
+    public Orders(Customers customer_id, String address, java.sql.Date delivery_time, String status, java.sql.Date order_time, double order_price,  Books book_id) {
         this.customer_id = customer_id;
         this.address = address;
         this.delivery_time = delivery_time;
         this.status = status;
         this.order_time = order_time;
         this.order_price = order_price;
-        this.order_list = order_list;
+        this.book_id = book_id;
     }
 
     @Id
@@ -70,15 +70,17 @@ public class Orders {
         this.order_price = order_price;
     }
 
-    public String getOrder_list() {
-        return order_list;
+    @ManyToOne(targetEntity=Books.class)
+    @JoinColumn(name = "book_id")
+    public Books getBook_id() {
+        return book_id;
     }
 
-    public void setOrder_list(String order_list) {
-        this.order_list = order_list;
+    public void setBook_id(Books book_id) {
+        this.book_id = book_id;
     }
 
-    private String order_list;
+    private Books book_id;
     private int order_id;
 
     @ManyToOne(targetEntity=Customers.class)
@@ -106,7 +108,7 @@ public class Orders {
         Orders orders = (Orders) o;
         return order_id == orders.order_id &&
                 Double.compare(orders.order_price, order_price) == 0 &&
-                order_list.equals(orders.order_list) &&
+                book_id.equals(orders.book_id) &&
                 customer_id.equals(orders.customer_id) &&
                 address.equals(orders.address) &&
                 delivery_time.equals(orders.delivery_time) &&
@@ -116,6 +118,6 @@ public class Orders {
 
     @Override
     public int hashCode() {
-        return Objects.hash(order_list, order_id, customer_id, address, delivery_time, status, order_time, order_price);
+        return Objects.hash(book_id, order_id, customer_id, address, delivery_time, status, order_time, order_price);
     }
 }

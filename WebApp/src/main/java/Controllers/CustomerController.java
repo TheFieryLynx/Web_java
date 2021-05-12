@@ -1,9 +1,13 @@
 package Controllers;
 
+import Models.Admin;
 import Models.Books;
 import Models.Customers;
+import Models.Orders;
+import Services.AdminService;
 import Services.BooksService;
 import Services.CustomersService;
+import Services.OrdersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -11,18 +15,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class CustomerController {
     CustomersService customersService = new CustomersService();
+    AdminService adminService = new AdminService();
+
 
     @GetMapping("/logged/personal")
-    public String filmPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username,
+    public String customerPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username,
                            @RequestParam(name = "customer_id", required = true) int customer_id, Model model) {
         Customers customer = customersService.readCustomerByID(customer_id);
-        if (!customer.getCustomer_login().equals(username)) {
-            model.addAttribute("error", "Permission denied.");
-            return "pageERROR";
+        Admin admin = adminService.readAdminByLogin(username);
+        if (admin == null) {
+            if (!customer.getCustomer_login().equals(username)) {
+                model.addAttribute("error", "Permission denied.");
+                return "pageERROR";
+            }
         }
+
         model.addAttribute("customer", customer);
         return "customer";
     }
@@ -60,5 +72,12 @@ public class CustomerController {
         }
         model.addAttribute("customer", customer);
         return "customer";
+    }
+
+    @GetMapping("/customers")
+    public String ordersPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username, Model model) {
+        List<Customers> customers = customersService.readCustomers();
+        model.addAttribute("customers", customers);
+        return "customers";
     }
 }

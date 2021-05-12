@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Index</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br>
+
+<a href="/" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+
+<br>
+
+<table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col"> Customer ID </th>
+    <th scope="col"> Login </th>
+    <th scope="col"> First Name </th>
+    <th scope="col"> Last Name </th>
+    <th scope="col"> Address </th>
+    <th scope="col"> Phone Number </th>
+    <th scope="col"> Mail </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${#lists.isEmpty(customers)}">
+    <td colspan="8"> No books :( </td>
+  </tr>
+  <tr th:each="customer : ${customers}">
+    <td scope="row"><a th:href="'/logged/personal?customer_id=' + ${customer.getCustomer_id()}"> <span th:text="${customer.getCustomer_id()}"> </span> </a></td>
+    <td><span th:text="${customer.getCustomer_login()}"> </span></td>
+    <td><span th:text="${customer.getFirstname()}"> </span></td>
+    <td><span th:text="${customer.getLastname()}"> </span></td>
+    <td><span th:text="${customer.getAddress()}"> </span></td>
+    <td><span th:text="${customer.getPhone_number()}"> </span></td>
+    <td><span th:text="${customer.getMail()}"> </span></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

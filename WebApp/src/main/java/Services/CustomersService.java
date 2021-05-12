@@ -3,6 +3,9 @@ package Services;
 import Dao.CustomersDao;
 import Dao.Impl.CustomersDaoImpl;
 import Models.Customers;
+import Models.Orders;
+
+import java.util.List;
 
 public class CustomersService {
     private CustomersDao customersDao = new CustomersDaoImpl();
@@ -29,5 +32,10 @@ public class CustomersService {
     public void deleteCustomerAccount(Customers customer) {
         customersDao.deleteAccount(customer);
     }
+
+    public List<Customers> readCustomers() {
+        return customersDao.readCustomers();
+    }
+
 
 }

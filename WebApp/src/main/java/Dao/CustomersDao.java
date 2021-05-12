@@ -1,6 +1,9 @@
 package Dao;
 
 import Models.Customers;
+import Models.Orders;
+
+import java.util.List;
 
 public interface CustomersDao {
     void create(Customers customer);
@@ -9,4 +12,5 @@ public interface CustomersDao {
     Customers readByID(int id);
     Customers readByLogin(String login);
     void deleteAccount(Customers customer);
+    List<Customers> readCustomers();
 }
