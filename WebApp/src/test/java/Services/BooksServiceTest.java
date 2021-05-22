@@ -15,7 +15,7 @@ public class BooksServiceTest {
     @Test
     public void testCreateBook() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
 
         Books check_book = bookService.readBookByID(new_book.getBook_id());
@@ -28,7 +28,7 @@ public class BooksServiceTest {
     @Test
     public void testDeleteBook() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         Books check_book = bookService.readBookByID(new_book.getBook_id());
         assertEquals(new_book, check_book);
@@ -42,7 +42,7 @@ public class BooksServiceTest {
     @Test
     public void testUpdateBook() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         Books check_book = bookService.readBookByID(new_book.getBook_id());
         Assert.assertEquals(new_book, check_book);
@@ -57,7 +57,7 @@ public class BooksServiceTest {
     @Test
     public void testReadBookByID() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         Books check_book = bookService.readBookByID(new_book.getBook_id());
         Assert.assertEquals(new_book.getBook_id(), check_book.getBook_id());
@@ -68,12 +68,12 @@ public class BooksServiceTest {
     public void testReadBooksListByGenre() {
         BooksService bookService = new BooksService();
         Set<Books> expected_list = Set.of(
-                new Books(544, 2, "1984. Скотный двор", "Оруэлл Джордж", "Классическая зарубежная проза", "АСТ", 2020, 481, "Твердая бумажная"),
-                new Books(354, 1, "Сага о Форсайтах", "Голсуорси Джон", "Классическая зарубежная проза", "Росмэн", 2018, 532, "Твердая бумажная"),
-                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков. Белый клык 2", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков. Белый клык 3", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков. Белый клык 4", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная")
+                new Books(544, 2, "1984. Скотный двор", "Оруэлл Джордж", "Классическая зарубежная проза", "АСТ", 2020, 481, "Твердая бумажная", false),
+                new Books(354, 1, "Сага о Форсайтах", "Голсуорси Джон", "Классическая зарубежная проза", "Росмэн", 2018, 532, "Твердая бумажная", false),
+                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков. Белый клык 2", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков. Белый клык 3", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков. Белый клык 4", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false)
         );
         List<Books> list_of_books = bookService.readBooksListByGenre("Классическая зарубежная проза");
         Assert.assertEquals(list_of_books.size(), expected_list.size());
@@ -86,11 +86,11 @@ public class BooksServiceTest {
     public void testReadBooksListByPubHouse() {
         BooksService bookService = new BooksService();
         Set<Books> expected_list = Set.of(
-                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 2. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 3. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 4. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная")
+                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 2. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 3. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 4. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false)
         );
         List<Books> list_of_books = bookService.readBooksListByPubHouse("Азбука");
         Assert.assertEquals(list_of_books.size(), expected_list.size());
@@ -105,10 +105,10 @@ public class BooksServiceTest {
     public void testReadBooksListByAuthor() {
         BooksService bookService = new BooksService();
         Set<Books> expected_list = Set.of(
-                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 2. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 3. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная"),
-                new Books(467, 68, "Зов предков 4. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная")
+                new Books(467, 68, "Зов предков. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 2. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 3. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false),
+                new Books(467, 68, "Зов предков 4. Белый клык", "Лондон Джек", "Классическая зарубежная проза", "Азбука", 2010, 354, "Мягкая бумажная", false)
         );
         List<Books> list_of_books = bookService.readBooksListByAuthor("Лондон Джек");
         Assert.assertEquals(list_of_books.size(), expected_list.size());
@@ -121,7 +121,7 @@ public class BooksServiceTest {
     @Test
     public void testReedBookAmount() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 1010101, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 1010101, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         Assert.assertEquals(bookService.reedBookAmount(new_book), new_book.getAmount());
         bookService.deleteBook(new_book);
@@ -130,7 +130,7 @@ public class BooksServiceTest {
     @Test
     public void testReadBookPrice() {
         BooksService bookService = new BooksService();
-        Books new_book = new Books(2020202, 1010101, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(2020202, 1010101, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         Assert.assertEquals(bookService.reedBookPrice(new_book), new_book.getPrice());
         bookService.deleteBook(new_book);

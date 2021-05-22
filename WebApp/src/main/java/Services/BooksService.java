@@ -3,6 +3,7 @@ package Services;
 import Dao.BooksDao;
 import Dao.Impl.BooksDaoImpl;
 import Models.Books;
+import Models.Customers;
 
 import java.util.List;
 
@@ -32,6 +33,10 @@ public class BooksService {
         return booksDao.readListByAuthor(author);
     }
 
+    public List<Books> readBooksListByTitle(String title) {
+        return booksDao.readListByTitle(title);
+    }
+
     public List<Books> readAllBooks() {
         return booksDao.AllBooks();
     }
@@ -46,6 +51,10 @@ public class BooksService {
 
     public double reedBookPrice(Books book) {
         return booksDao.bookPrice(book);
+    }
+
+    public void deleteBookAccount(Books book) {
+        booksDao.deleteBook(book);
     }
 
 //    public void updateBooksPrice(Books book, double price) {

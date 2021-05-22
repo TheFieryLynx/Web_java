@@ -18,7 +18,7 @@
 <header class="sticky">
     <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-            <a href="/logged" class="btn btn-outline-warning" role="button">Root page</a>
+            <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
         </div>
     </nav>
 </header>
@@ -59,7 +59,7 @@
     </tbody>
 </table>
 <a th:href="'/customerEdit?customer_id=' + ${customer.getCustomer_id()}" class="btn btn-primary" role="button">Edit</a>
-
+<a th:href="'/customerDelete?customer_id=' + ${customer.getCustomer_id()}" class="btn btn-primary" role="button">Delete customer</a>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

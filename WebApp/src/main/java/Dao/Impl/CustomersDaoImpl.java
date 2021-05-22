@@ -1,6 +1,7 @@
 package Dao.Impl;
 
 import Dao.CustomersDao;
+import Models.Books;
 import Models.Customers;
 import Models.Orders;
 import Utils.HibernateSessionFactoryUtil;
@@ -51,15 +52,18 @@ public class CustomersDaoImpl implements CustomersDao {
     @Override
     public Customers readByID(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Customers admin = session.get(Customers.class, id);
-        session.close();
-        return admin;
+        Query<Customers> query = session.createQuery("FROM Customers WHERE customer_id = :param AND deleted_account = false", Customers.class)
+                .setParameter("param", id);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList().get(0);
     }
 
     @Override
     public Customers readByLogin(String login) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Customers> query = session.createQuery("FROM Customers WHERE customer_login = :param", Customers.class)
+        Query<Customers> query = session.createQuery("FROM Customers WHERE customer_login = :param AND deleted_account = false", Customers.class)
                 .setParameter("param", login);
         if (query.getResultList().size() == 0) {
             return null;
@@ -73,12 +77,10 @@ public class CustomersDaoImpl implements CustomersDao {
 
     @Override
     public List<Customers> readCustomers() {
+
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        CriteriaQuery<Customers> criteria = session.getCriteriaBuilder().createQuery(Customers.class);
-        criteria.from(Customers.class);
-        List<Customers> data = session.createQuery(criteria).getResultList();
-        session.close();
-        return data;
+        Query<Customers> query = session.createQuery("FROM Customers WHERE deleted_account = false", Customers.class);
+        return query.getResultList();
     }
 
 

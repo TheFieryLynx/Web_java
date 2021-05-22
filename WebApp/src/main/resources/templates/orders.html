@@ -4,11 +4,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Index</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style>
+    .sticky {
+      position: sticky;
+      top: 0em;
+      min-height: 0em;
+    }
+  </style>
 </head>
 <body>
 <br>
 
-<a href="/logged" class="btn btn-outline-primary" role="button">Root page</a><br><br>
+<header class="sticky">
+  <nav class="navbar sticky-top navbar-dark bg-dark">
+    <div class="btn-group" role="group" aria-label="top buttons">
+      <a href="/logged" class="btn btn-outline-warning" role="button">Root page</a>
+    </div>
+  </nav>
+</header>
 
 <br>
 

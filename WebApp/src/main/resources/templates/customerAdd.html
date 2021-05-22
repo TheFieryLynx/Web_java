@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Log in</title>
+  <title>Registration</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <style>
     .sticky {
@@ -25,7 +25,7 @@
 
 <br>
 
-<form action="/identification" method="post">
+<form action="/customerCreation" method="post">
   <div class="col-md-4 mx-auto">
     <label for="validationDefaultUsername" class="form-label">Username</label>
     <input type="text" class="form-control" name="username" id="validationDefaultUsername" required placeholder="Username">
@@ -33,13 +33,37 @@
 
   <div class="col-md-4 mx-auto">
     <label for="inputPassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword" name="password" required placeholder="Password">
+    <input type="password" class="form-control" id="inputPassword" name="password" required placeholder="Must be >= 4 characters">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultFirstName" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationDefaultFirstName" name="first_name" required placeholder="First">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultSecondName" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationDefaultSecondName" name="last_name" required placeholder="Last">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="validationDefaultAddress" name="address" required placeholder="City, street, house, apartment number">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultPhone" class="form-label">Phone Number</label>
+    <input type="text" class="form-control" id="validationDefaultPhone" name="phone_number" required placeholder="89871236540">
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <label for="validationDefaultMail" class="form-label">Mail</label>
+    <input type="text" class="form-control" id="validationDefaultMail" name="mail" required placeholder="example@box.ru">
   </div>
   <br>
   <div class="col-md-4 mx-auto">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Add customer</button>
   </div>
-
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -2,6 +2,7 @@ package Dao.Impl;
 
 import Dao.BooksDao;
 import Models.Books;
+import Models.Customers;
 import Utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,23 +54,40 @@ public class BooksDaoImpl implements BooksDao {
     @Override
     public Books readByID(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Books book = session.get(Books.class, id);
-        session.close();
-        return book;
+        Query<Books> query = session.createQuery("FROM Books WHERE book_id = :param AND deleted_book = false", Books.class)
+                .setParameter("param", id);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList().get(0);
+    }
+
+    @Override
+    public List<Books> readListByTitle(String title) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Books> query = session.createQuery("FROM Books WHERE title = :param AND deleted_book = false", Books.class)
+                .setParameter("param", title);
+        return query.getResultList();
     }
 
     @Override
     public List<Books> readListByGenre(String genre) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Books> query = session.createQuery("FROM Books WHERE genre = :param", Books.class)
+        Query<Books> query = session.createQuery("FROM Books WHERE genre = :param AND deleted_book = false", Books.class)
                 .setParameter("param", genre);
         return query.getResultList();
     }
 
     @Override
+    public void deleteBook(Books book) {
+        book.setDeleted_book(true);
+        update(book);
+    }
+
+    @Override
     public List<Books> readListByAuthor(String author) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Books> query = session.createQuery("FROM Books WHERE author = :param", Books.class)
+        Query<Books> query = session.createQuery("FROM Books WHERE author = :param AND deleted_book = false", Books.class)
                 .setParameter("param", author);
         return query.getResultList();
     }
@@ -77,7 +95,7 @@ public class BooksDaoImpl implements BooksDao {
     @Override
     public List<Books> readListByPubHouse(String pub_house) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Books> query = session.createQuery("FROM Books WHERE pub_house = :param", Books.class)
+        Query<Books> query = session.createQuery("FROM Books WHERE pub_house = :param AND deleted_book = false", Books.class)
                 .setParameter("param", pub_house);
         return query.getResultList();
     }
@@ -95,11 +113,8 @@ public class BooksDaoImpl implements BooksDao {
     @Override
     public List<Books> AllBooks() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        CriteriaQuery<Books> criteria = session.getCriteriaBuilder().createQuery(Books.class);
-        criteria.from(Books.class);
-        List<Books> data = session.createQuery(criteria).getResultList();
-        session.close();
-        return data;
+        Query<Books> query = session.createQuery("FROM Books WHERE deleted_book = false", Books.class);
+        return query.getResultList();
     }
 
 

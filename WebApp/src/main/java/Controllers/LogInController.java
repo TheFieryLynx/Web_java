@@ -24,30 +24,52 @@ public class LogInController {
     BooksService bookService = new BooksService();
 
     @GetMapping("/logged")
-    public String hello(Model model, @CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username) {
+    public String hello(Model model, @CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String cookie_username,
+                                     @CookieValue(value = "password", defaultValue = "DefaultValueForCookiePassword") String cookie_password) {
         List<Books> books = bookService.readAllBooks();
         model.addAttribute("books", books);
 
-        Admin exist_admin = adminService.readAdminByLogin(username);
+        Admin exist_admin = adminService.readAdminByLogin(cookie_username);
         if (exist_admin != null) {
-            return "LAindex";
+            if (exist_admin.getAdmin_password().equals(cookie_password)) {
+                return "LAindex";
+            }
         }
 
-        Customers exist_customer = customersService.readCustomerByLogin(username);
-        model.addAttribute("customer_id", exist_customer.getCustomer_id());
-        return "LUindex";
+        Customers exist_customer = customersService.readCustomerByLogin(cookie_username);
+        if (exist_customer != null) {
+            if (exist_customer.getCustomer_password().equals(cookie_password)) {
+                model.addAttribute("customer_id", exist_customer.getCustomer_id());
+                return "LUindex";
+            }
+        }
+
+        model.addAttribute("error", "Permission denied");
+        return "pageERROR";
     }
 
     @GetMapping("/logIn")
-    public String registrationPage() {
+    public String registrationPage(Model model, @CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String cookie_username) {
+        Admin exist_admin = adminService.readAdminByLogin(cookie_username);
+        if (exist_admin != null) {
+            model.addAttribute("error", "Permission denied");
+            return "pageERROR";
+        }
+
+        Customers exist_customer = customersService.readCustomerByLogin(cookie_username);
+        if (exist_customer != null) {
+            model.addAttribute("error", "Permission denied");
+            return "pageERROR";
+        }
         return "logIn";
     }
 
     @GetMapping("/logOut")
-    public String logOut(HttpServletResponse response, @CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username) {
-        System.out.println(username);
-        Cookie cookie = new Cookie("login", "DefaultValueForCookieUsername");
-        response.addCookie(cookie);
+    public String logOut(HttpServletResponse response) {
+        Cookie cookie_username = new Cookie("login", "DefaultValueForCookieUsername");
+        Cookie cookie_password = new Cookie("password", "DefaultValueForCookiePassword");
+        response.addCookie(cookie_username);
+        response.addCookie(cookie_password);
         return "redirect:/";
     }
 
@@ -56,6 +78,7 @@ public class LogInController {
                                          @RequestParam(name = "username") String username,
                                          @RequestParam(name = "password") String password,
                                          Model model) {
+
         Customers exist_customer = customersService.readCustomerByLogin(username);
         Admin exist_admin = adminService.readAdminByLogin(username);
 
@@ -66,8 +89,12 @@ public class LogInController {
             } else {
                 List<Books> books = bookService.readAllBooks();
                 model.addAttribute("books", books);
-                Cookie cookie = new Cookie("login", username);
-                response.addCookie(cookie);
+
+                Cookie cookie_username = new Cookie("login", username);
+                Cookie cookie_password = new Cookie("password", password);
+                response.addCookie(cookie_username);
+                response.addCookie(cookie_password);
+
                 model.addAttribute("customer_id", exist_customer.getCustomer_id());
                 return "LUindex";
             }
@@ -81,8 +108,12 @@ public class LogInController {
             } else {
                 List<Books> books = bookService.readAllBooks();
                 model.addAttribute("books", books);
-                Cookie cookie = new Cookie("login", username);
-                response.addCookie(cookie);
+
+                Cookie cookie_username = new Cookie("login", username);
+                Cookie cookie_password = new Cookie("password", password);
+                response.addCookie(cookie_username);
+                response.addCookie(cookie_password);
+
                 model.addAttribute("admin_id", exist_admin.getAdmin_id());
                 return "LAindex";
             }

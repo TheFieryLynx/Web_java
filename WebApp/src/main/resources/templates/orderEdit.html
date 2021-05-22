@@ -4,11 +4,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Book info</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .sticky {
+            position: sticky;
+            top: 0em;
+            min-height: 0em;
+        }
+    </style>
 </head>
 <body>
 <br>
-<a href="/" class="btn btn-outline-primary" role="button">Root page</a><br><br>
 
+<header class="sticky">
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <div class="btn-group" role="group" aria-label="top buttons">
+            <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+        </div>
+    </nav>
+</header>
+
+<br>
 
 <form th:action="'/saveEditOrder?order_id=' + ${order.getOrder_id()}" method="post" id="orderform"></form>
 <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">

@@ -4,38 +4,79 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>LUIndex</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style>
+    .sticky {
+      position: sticky;
+      top: 0em;
+      min-height: 0em;
+    }
+  </style>
 </head>
 <body>
 <br>
 
-<div class="btn-group" role="group" aria-label="top buttons">
-  <a href="/logged" class="btn btn-outline-primary" role="button">Root Admin page</a>
-  <a href="/orders" class="btn btn-outline-primary" role="button">Orders</a>
-  <a href="/customers" class="btn btn-outline-primary" role="button">Customers</a>
-  <a href="/logOut" class="btn btn-outline-primary" role="button">Log Out</a>
+<header class="sticky">
+  <nav class="navbar sticky-top navbar-dark bg-dark">
+    <div class="btn-group" role="group" aria-label="top buttons">
+      <a href="/logged" class="btn btn-outline-warning" role="button">Root Admin page</a>
+      <a href="/orders" class="btn btn-outline-warning" role="button">Orders</a>
+      <a href="/customers" class="btn btn-outline-warning" role="button">Customers</a>
+      <a href="/addBook" class="btn btn-outline-warning" role="button">Add book</a>
+      <a href="/addCustomer" class="btn btn-outline-warning" role="button">Add customer</a>
+      <a href="/logOut" class="btn btn-outline-warning" role="button">Log Out</a>
+    </div>
+  </nav>
+</header>
+
+<br>
+
+<div class="row" >
+  <div class="table-responsive col-md-6">
+    <table class="table table-bordered " style="width: auto;">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col"> Title </th>
+        <th scope="col"> Author </th>
+        <th scope="col"> Genre </th>
+        <th scope="col"> Price </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${#lists.isEmpty(books)}">
+        <td colspan="8"> No books :( </td>
+      </tr>
+      <tr th:each="book : ${books}">
+        <td scope="row"> <a th:href="'/book?book_id=' + ${book.getBook_id()}"> <span th:text="${book.getTitle()}"> </span> </a></td>
+        <td><span th:text="${book.getAuthor()}"> </span></td>
+        <td><span th:text="${book.getGenre()}"> </span></td>
+        <td><span th:text="${book.getPrice()}"> </span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-responsive col-md-6">
+    <form action="/filter" method="post">
+      <div class="col-md-4 mx-auto">
+        <label for="validationTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="validationTitle" placeholder="Title">
+      </div>
+
+      <div class="col-md-4 mx-auto">
+        <label for="validationAutor" class="form-label">Author</label>
+        <input type="text" class="form-control" id="validationAutor" name="author" placeholder="Author">
+      </div>
+
+      <div class="col-md-4 mx-auto">
+        <label for="validationGenre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="validationGenre" name="genre" placeholder="Genre">
+      </div>
+      <br>
+      <div class="col-md-4 mx-auto">
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </div>
+    </form>
+  </div>
 </div>
-
-<br><br>
-
-<table class="table table-bordered " style="width: auto;">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col"> Title </th>
-    <th scope="col"> Author </th>
-    <th scope="col"> Price </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:if="${#lists.isEmpty(books)}">
-    <td colspan="8"> No books :( </td>
-  </tr>
-  <tr th:each="book : ${books}">
-    <td scope="row"> <a th:href="'/book?book_id=' + ${book.getBook_id()}"> <span th:text="${book.getTitle()}"> </span> </a></td>
-    <td><span th:text="${book.getAuthor()}"> </span></td>
-    <td><span th:text="${book.getPrice()}"> </span></td>
-  </tr>
-  </tbody>
-</table>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

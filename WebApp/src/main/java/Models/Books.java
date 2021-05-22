@@ -10,7 +10,7 @@ public class Books
     public Books(double price,
                      int amount, String title, String author,
                         String genre, String pub_house, int pub_year,
-                            int num_pages, String cover_type) {
+                            int num_pages, String cover_type, boolean deleted_book) {
         this.price = price;
         this.amount = amount;
         this.title = title;
@@ -20,12 +20,14 @@ public class Books
         this.pub_year = pub_year;
         this.num_pages = num_pages;
         this.cover_type = cover_type;
+        this.deleted_book = deleted_book;
+
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(price, amount, title, author, genre, pub_house,
-                                pub_year, num_pages, cover_type);
+                                pub_year, num_pages, cover_type, deleted_book);
     }
 
     public Books() {    }
@@ -113,6 +115,14 @@ public class Books
         this.cover_type = cover_type;
     }
 
+    public void setDeleted_book(boolean deleted_book) {
+        this.deleted_book = deleted_book;
+    }
+
+    public boolean getDeleted_book() {
+        return deleted_book;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) { return false; }
@@ -126,6 +136,7 @@ public class Books
                 (this.pub_house.equals(other.pub_house)) &&
                 (this.pub_year == other.pub_year) &&
                 (this.num_pages == other.num_pages) &&
+                (this.deleted_book == other.deleted_book) &&
                 (this.cover_type.equals(other.cover_type));
     }
 
@@ -139,4 +150,5 @@ public class Books
     private int pub_year;
     private int num_pages;
     private String cover_type;
+    private boolean deleted_book;
 }

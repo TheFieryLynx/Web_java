@@ -17,7 +17,7 @@ public class OrdersServiceTest {
         Customers new_customer = new Customers("UserWithOrder", "qwertyuiop","Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
 
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
 
         customersService.createCustomer(new_customer);
@@ -39,7 +39,7 @@ public class OrdersServiceTest {
         OrdersService ordersService = new OrdersService();
         Customers new_customer = new Customers("UserWithOrder", "qwertyuiop","Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         customersService.createCustomer(new_customer);
         Orders new_order = new Orders(new_customer, "193857, Воронежская область, город Москва, спуск Чехова, 62",
@@ -62,7 +62,7 @@ public class OrdersServiceTest {
         OrdersService ordersService = new OrdersService();
         Customers new_customer = new Customers("UserWithOrder", "qwertyuiop","Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная", false);
         bookService.createBook(new_book);
         customersService.createCustomer(new_customer);
         Orders new_order = new Orders(new_customer, "193857, Воронежская область, город Москва, спуск Чехова, 62",
@@ -89,7 +89,7 @@ public class OrdersServiceTest {
         Customers new_customer = new Customers("UserWithOrder", "qwertyuiop","Warton", "Clevie", "392653, Омская область, город Ступино, въезд Сталина, 30", "55(301)752-0255", "cwarton1@dyndns.org", false);
 
         BooksService bookService = new BooksService();
-        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная");
+        Books new_book = new Books(869, 21, "Воин Доброй Удачи", "Бэккер Р. Скотт", "Героическое зарубежное фэнтези", "Азбука", 2021, 780, "Мягкая бумажная",false);
         bookService.createBook(new_book);
         customersService.createCustomer(new_customer);
         Orders new_order = new Orders(new_customer, "193857, Воронежская область, город Москва, спуск Чехова, 62",

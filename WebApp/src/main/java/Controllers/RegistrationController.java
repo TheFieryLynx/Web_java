@@ -1,7 +1,9 @@
 package Controllers;
 
+import Models.Admin;
 import Models.Books;
 import Models.Customers;
+import Services.AdminService;
 import Services.CustomersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RegistrationController {
 
     CustomersService customersService = new CustomersService();
+    AdminService adminService = new AdminService();
 
     @GetMapping("/registration")
-    public String registrationPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String username) {
-        if (!username.equals("DefaultValueForCookieUsername")) {
-            return "redirect:/logged";
+    public String registrationPage(@CookieValue(value = "login", defaultValue = "DefaultValueForCookieUsername") String cookie_username,
+                                   @CookieValue(value = "password", defaultValue = "DefaultValueForCookiePassword") String cookie_password,
+                                   Model model) {
+        Customers exist_customer = customersService.readCustomerByLogin(cookie_username);
+        if (exist_customer != null) {
+            if (exist_customer.getCustomer_password().equals(cookie_password)) {
+                return "redirect:/logged";
+            }
         }
         return "registration";
     }
@@ -64,5 +72,7 @@ public class RegistrationController {
         model.addAttribute("error", "Account creation error");
         return "pageERROR";
     }
+
+
 
 }
