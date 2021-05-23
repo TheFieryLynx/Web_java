@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Book info</title>
+  <title>Customer info edit</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <style>
     .sticky {
@@ -18,7 +18,7 @@
 <header class="sticky">
   <nav class="navbar sticky-top navbar-dark bg-dark">
     <div class="btn-group" role="group" aria-label="top buttons">
-      <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+      <a id="customer_info_edit_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
     </div>
   </nav>
 </header>
@@ -34,37 +34,37 @@
 
   <tr>
     <td>Password</td>
-    <td><input class="form-control" type="text" name="password" th:value="${customer.getCustomer_password()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputPassword" name="password" th:value="${customer.getCustomer_password()}" form="myform"></td>
   </tr>
 
   <tr>
     <td>First Name</td>
-    <td><input class="form-control" type="text" name="first_name" th:value="${customer.getFirstname()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputFirstName" name="first_name" th:value="${customer.getFirstname()}" form="myform"></td>
   </tr>
 
   <tr>
     <td>Last Name</td>
-    <td><input class="form-control" type="text" name="last_name" th:value="${customer.getLastname()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputLastName" name="last_name" th:value="${customer.getLastname()}" form="myform"></td>
   </tr>
 
   <tr>
     <td>Address</td>
-    <td><input class="form-control" type="text" name="address" th:value="${customer.getAddress()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputAddress" name="address" th:value="${customer.getAddress()}" form="myform"></td>
   </tr>
 
   <tr>
     <td>Phone number</td>
-    <td><input class="form-control" type="text" name="phone_number" th:value="${customer.getPhone_number()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputPhoneNumber" name="phone_number" th:value="${customer.getPhone_number()}" form="myform"></td>
   </tr>
 
   <tr>
     <td>Mail</td>
-    <td><input class="form-control" type="text" name="mail" th:value="${customer.getMail()}" form="myform"></td>
+    <td><input class="form-control" type="text" id="inputMail" name="mail" th:value="${customer.getMail()}" form="myform"></td>
   </tr>
 
 </table>
 <div class="col-md-4">
-  <button type="submit" class="btn btn-primary" form="myform">Save</button>
+  <button id="customer_info_edit_save" type="submit" class="btn btn-primary" form="myform">Save</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

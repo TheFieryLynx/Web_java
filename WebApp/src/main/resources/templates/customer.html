@@ -18,14 +18,14 @@
 <header class="sticky">
     <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-            <a href="/logged" class="btn btn-outline-warning" role="button">Root page</a>
+            <a id="log_in_root_page_button" href="/logged" class="btn btn-outline-warning" role="button">Root page</a>
         </div>
     </nav>
 </header>
 
 <br>
 
-<table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+<table id="customer_info_table" class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
     <tbody>
     <tr>
         <td>Login</td>
@@ -58,7 +58,7 @@
 
     </tbody>
 </table>
-<a th:href="'/customerEdit?customer_id=' + ${customer.getCustomer_id()}" class="btn btn-primary" role="button">Edit</a>
+<a id="customer_info_edit_button" th:href="'/customerEdit?customer_id=' + ${customer.getCustomer_id()}" class="btn btn-primary" role="button">Edit</a>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -18,14 +18,14 @@
     <header class="sticky">
       <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-          <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+          <a id="book_buy_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
         </div>
       </nav>
     </header>
 
     <br>
 
-    <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <table id="bookInfoTable" class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
       <tbody>
         <tr>
           <td>Title</td>
@@ -66,7 +66,7 @@
 
       </tbody>
     </table>
-    <a th:href="'/bookBuy?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Buy</a>
+    <a id="book_buy_button" th:href="'/bookBuy?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Buy</a>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -39,7 +39,8 @@ public class RootPageController {
                 return "redirect:/logged";
             }
         }
-
+        System.out.println(cookie_username);
+        System.out.println(cookie_password);
         return "index";
     }
 }

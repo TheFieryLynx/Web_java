@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Log in</title>
+  <title>Log In Page</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <style>
     .sticky {
@@ -18,7 +18,7 @@
 <header class="sticky">
   <nav class="navbar sticky-top navbar-dark bg-dark">
     <div class="btn-group" role="group" aria-label="top buttons">
-      <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+      <a id="log_in_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
     </div>
   </nav>
 </header>
@@ -27,8 +27,8 @@
 
 <form action="/identification" method="post">
   <div class="col-md-4 mx-auto">
-    <label for="validationDefaultUsername" class="form-label">Username</label>
-    <input type="text" class="form-control" name="username" id="validationDefaultUsername" required placeholder="Username">
+    <label for="inputUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" id="inputUsername" required placeholder="Username">
   </div>
 
   <div class="col-md-4 mx-auto">
@@ -37,7 +37,7 @@
   </div>
   <br>
   <div class="col-md-4 mx-auto">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button id="log_in_button" type="submit" class="btn btn-primary">Sign in</button>
   </div>
 
 </form>

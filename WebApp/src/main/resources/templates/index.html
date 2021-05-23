@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Index</title>
+  <title>Main Page for not logged user</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <style>
     .sticky {
@@ -18,9 +18,9 @@
     <header class="sticky">
       <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-          <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
-          <a href="/registration" class="btn btn-outline-warning" role="button">Registration</a>
-          <a href="/logIn" class="btn btn-outline-warning" role="button">Log In</a>
+          <a id="index_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
+          <a id="index_registration_button" href="/registration" class="btn btn-outline-warning" role="button">Registration</a>
+          <a id="index_log_in_button" href="/logIn" class="btn btn-outline-warning" role="button">Log In</a>
         </div>
       </nav>
     </header>
@@ -43,6 +43,11 @@
             <td colspan="8"> No books :( </td>
           </tr>
           <tr th:each="book : ${books}">
+
+            <form>
+              <input type="hidden" name="index_book_id" th:value="${book.getBook_id()}"/>
+            </form>
+
             <td scope="row"> <a th:href="'/book?book_id=' + ${book.getBook_id()}"> <span th:text="${book.getTitle()}"> </span> </a></td>
             <td><span th:text="${book.getAuthor()}"> </span></td>
             <td><span th:text="${book.getGenre()}"> </span></td>
