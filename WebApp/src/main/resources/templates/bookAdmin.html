@@ -18,14 +18,14 @@
     <header class="sticky">
       <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-          <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+          <a id="book_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
         </div>
       </nav>
     </header>
 
     <br>
 
-    <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+    <table id="bookInfoTable" class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
       <tbody>
         <tr>
           <td>Title</td>
@@ -66,8 +66,8 @@
 
       </tbody>
     </table>
-    <a th:href="'/bookEdit?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Edit</a>
-    <a th:href="'/deleteBook?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Delete</a><br><br>
+    <a id="book_admin_edit_button" th:href="'/bookEdit?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Edit</a>
+    <a id="book_admin_delete_button" th:href="'/deleteBook?book_id=' + ${book.getBook_id()}" class="btn btn-primary" role="button">Delete</a><br><br>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>LUIndex</title>
+  <title>Main Page for admin</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <style>
     .sticky {
@@ -18,11 +18,11 @@
 <header class="sticky">
   <nav class="navbar sticky-top navbar-dark bg-dark">
     <div class="btn-group" role="group" aria-label="top buttons">
-      <a href="/logged" class="btn btn-outline-warning" role="button">Root Admin page</a>
+      <a id="LAindex_root_page_button" href="/logged" class="btn btn-outline-warning" role="button">Root Admin page</a>
       <a href="/orders" class="btn btn-outline-warning" role="button">Orders</a>
       <a href="/customers" class="btn btn-outline-warning" role="button">Customers</a>
-      <a href="/addBook" class="btn btn-outline-warning" role="button">Add book</a>
-      <a href="/addCustomer" class="btn btn-outline-warning" role="button">Add customer</a>
+      <a id="LAindex_add_book_button" href="/addBook" class="btn btn-outline-warning" role="button">Add book</a>
+      <a id="LAindex_add_customer_button" href="/addCustomer" class="btn btn-outline-warning" role="button">Add customer</a>
       <a href="/logOut" class="btn btn-outline-warning" role="button">Log Out</a>
     </div>
   </nav>
@@ -46,6 +46,11 @@
         <td colspan="8"> No books :( </td>
       </tr>
       <tr th:each="book : ${books}">
+
+        <form>
+          <input type="hidden" name="index_book_id" th:value="${book.getBook_id()}"/>
+        </form>
+
         <td scope="row"> <a th:href="'/book?book_id=' + ${book.getBook_id()}"> <span th:text="${book.getTitle()}"> </span> </a></td>
         <td><span th:text="${book.getAuthor()}"> </span></td>
         <td><span th:text="${book.getGenre()}"> </span></td>

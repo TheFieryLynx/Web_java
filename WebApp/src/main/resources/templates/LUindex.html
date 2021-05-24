@@ -19,8 +19,8 @@
     <div class="btn-group" role="group" aria-label="top buttons">
       <a id="LUindex_root_page_button" href="/logged" class="btn btn-outline-warning" role="button">Root page</a>
       <a id="LUindex_personal_area_button" th:href="'/logged/personal?customer_id=' + ${customer_id}" class="btn btn-outline-warning" role="button">Personal Area</a>
-      <a th:href="'/logged/orders?customer_id=' + ${customer_id}" class="btn btn-outline-warning" role="button">Orders</a>
-      <a href="/logOut" class="btn btn-outline-warning" role="button">Log Out</a>
+      <a id="LUindex_orders_button" th:href="'/logged/orders?customer_id=' + ${customer_id}" class="btn btn-outline-warning" role="button">Orders</a>
+      <a id="LUindex_logout_button"href="/logOut" class="btn btn-outline-warning" role="button">Log Out</a>
     </div>
   </nav>
 </header>

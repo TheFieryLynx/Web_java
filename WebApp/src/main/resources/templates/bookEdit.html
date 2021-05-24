@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Book info</title>
+    <title>Book edit</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style>
         .sticky {
@@ -18,7 +18,7 @@
 <header class="sticky">
     <nav class="navbar sticky-top navbar-dark bg-dark">
         <div class="btn-group" role="group" aria-label="top buttons">
-            <a href="/" class="btn btn-outline-warning" role="button">Root page</a>
+            <a id="book_edit_root_page_button" href="/" class="btn btn-outline-warning" role="button">Root page</a>
         </div>
     </nav>
 </header>
@@ -29,53 +29,53 @@
 <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
     <tr>
         <td>Title</td>
-        <td><input class="form-control" style="width: auto" type="text" name="title" th:value="${book.getTitle()}" form="myform"></td>
+        <td><input class="form-control" id="inputTitle" style="width: auto" type="text" name="title" th:value="${book.getTitle()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Author</td>
-        <td><input class="form-control" type="text" name="author" th:value="${book.getAuthor()}" form="myform"></td>
+        <td><input class="form-control" id="inputAuthor" type="text" name="author" th:value="${book.getAuthor()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Genre</td>
-        <td><input class="form-control" type="text" name="genre" th:value="${book.getGenre()}" form="myform"></td>
+        <td><input class="form-control" id="inputGenre" type="text" name="genre" th:value="${book.getGenre()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Publication House</td>
-        <td><input class="form-control" type="text" name="pub_house" th:value="${book.getPub_house()}" form="myform"></td>
+        <td><input class="form-control" id="inputPubHouse" type="text" name="pub_house" th:value="${book.getPub_house()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Year</td>
-        <td><input class="form-control" type="text" name="year" th:value="${book.getPub_year()}" form="myform"></td>
+        <td><input class="form-control" id="inputYear" type="text" name="year" th:value="${book.getPub_year()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Number of pages</td>
-        <td><input class="form-control" type="text" name="num_of_pages" th:value="${book.getNum_pages()}" form="myform"></td>
+        <td><input class="form-control" id="inputPages" type="text" name="num_of_pages" th:value="${book.getNum_pages()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Cover type</td>
-        <td><input class="form-control" type="text" name="cover_type" th:value="${book.getCover_type()}" form="myform"></td>
+        <td><input class="form-control" id="inputCover" type="text" name="cover_type" th:value="${book.getCover_type()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Book price</td>
-        <td><input class="form-control" type="text" name="price" th:value="${book.getPrice()}" form="myform"></td>
+        <td><input class="form-control" id="inputPrice" type="text" name="price" th:value="${book.getPrice()}" form="myform"></td>
     </tr>
 
     <tr>
         <td>Amount</td>
-        <td><input class="form-control" type="text" name="amount" th:value="${book.getAmount()}" form="myform"></td>
+        <td><input class="form-control" id="inputAmount" type="text" name="amount" th:value="${book.getAmount()}" form="myform"></td>
     </tr>
 
 
 </table>
     <div class="col-md-4">
-        <button type="submit" class="btn btn-primary" form="myform">Save</button>
+        <button id="save_edit_book_button" type="submit" class="btn btn-primary" form="myform">Save</button>
     </div>
 
     <br><br>

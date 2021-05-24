@@ -54,7 +54,7 @@ public class BooksDaoImpl implements BooksDao {
     @Override
     public Books readByID(int id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Books> query = session.createQuery("FROM Books WHERE book_id = :param AND deleted_book = false", Books.class)
+        Query<Books> query = session.createQuery("FROM Books WHERE book_id = :param", Books.class)
                 .setParameter("param", id);
         if (query.getResultList().size() == 0) {
             return null;

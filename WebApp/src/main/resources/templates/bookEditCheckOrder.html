@@ -28,7 +28,7 @@
 <br>
 <div class="row" >
 <div class="table-responsive col-md-6">
-  <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+  <table id="bookInfoTable" class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
     <tbody>
     <tr>
       <td>Title</td>
@@ -71,33 +71,33 @@
 </div>
 <div class="table-responsive col-md-6">
   <form th:action="'/saveBookEditOrder?book_id=' + ${book.getBook_id()}" method="post" id="saveorder"></form>
-  <table class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
+  <table id="customer_info_edit_table" class="table table-bordered " style="width: auto; background-color: rgba(43,5,22,.1)">
     <tbody>
     <tr>
       <td>First Name</td>
-      <td><input class="form-control" type="text" name="first_name" th:value="${customer.getFirstname()}" form="saveorder"></td>
+      <td><input class="form-control" id="first_name" type="text" name="first_name" th:value="${customer.getFirstname()}" form="saveorder"></td>
     </tr>
     <tr>
       <td>Last Name</td>
-      <td><input class="form-control" type="text" name="last_name" th:value="${customer.getLastname()}" form="saveorder"></td>
+      <td><input class="form-control" id="last_name" type="text" name="last_name" th:value="${customer.getLastname()}" form="saveorder"></td>
     </tr>
     <tr>
       <td>Address</td>
-      <td><input class="form-control" type="text" name="address" th:value="${customer.getAddress()}" form="saveorder"></td>
+      <td><input class="form-control" id="address" type="text" name="address" th:value="${customer.getAddress()}" form="saveorder"></td>
     </tr>
     <tr>
       <td>Phone number</td>
-      <td><input class="form-control" type="text" name="phone_number" th:value="${customer.getPhone_number()}" form="saveorder"></td>
+      <td><input class="form-control" id="phone" type="text" name="phone_number" th:value="${customer.getPhone_number()}" form="saveorder"></td>
     </tr>
     <tr>
       <td>Mail</td>
-      <td><input class="form-control" type="text" name="mail" th:value="${customer.getMail()}" form="saveorder"></td>
+      <td><input class="form-control" id="mail" type="text" name="mail" th:value="${customer.getMail()}" form="saveorder"></td>
     </tr>
 
     </tbody>
   </table>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" form="saveorder">Save</button>
+    <button id="book_check_order_edit_customer_save_button" type="submit" class="btn btn-primary" form="saveorder">Save</button>
   </div></div>
 </div>
 
